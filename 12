@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>숫자 게임</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>    <style>
+        body {        body {
+            font-family: Arial, sans-serif;            font-family: Arial, sans-serif;
+            text-align: center;            text-align: center;
+            margin: 0;            margin: 0;
+            padding: 0;            padding: 0;
+        }        }
+        .container {        .container {
+            padding: 20px;            padding: 20px;
+        }        }
+        .card {        .card {
+            display: inline-block;            display: inline-block;
+            width: 60px;            width: 60px;
+            height: 80px;            height: 80px;
+            margin: 10px;            margin: 10px;
+            line-height: 80px;            line-height: 80px;
+            font-size: 24px;            font-size: 24px;
+            border: 2px solid black;            border: 2px solid black;
+            border-radius: 5px;            border-radius: 5px;
+            cursor: pointer;            cursor: pointer;
+        }        }
+        .black { background-color: black; color: white; }        .black { background-color: black; color: white; }
+        .white { background-color: white; color: black; }        .white { background-color: white; color: black; }
+        #submit {        #submit {        #submit {        #submit {
+            margin-top: 20px;            margin-top: 20px;            margin-top: 20px;            margin-top: 20px;
+            padding: 10px 20px;            padding: 10px 20px;            padding: 10px 20px;            padding: 10px 20px;
+            font-size: 18px;            font-size: 18px;            font-size: 18px;            font-size: 18px;
+        }        }        }        }
+        #result {        #result {        #result {        #result {
+            margin-top: 20px;            margin-top: 20px;            margin-top: 20px;            margin-top: 20px;
+            font-size: 18px;            font-size: 18px;            font-size: 18px;            font-size: 18px;
+        }        }        }        }
+    </style>    </style>    </style>    </style>
+</head></head></head></head>
+<body><body><body><body>
+    <div class="container">    <div class="container">    <div class="container">    <div class="container">
+        <h1>숫자 게임</h1>        <h1>Number game</h1>        <h1>Number game</h1> <h1>Number game</h1>
+        <div id="cards">        <div id="cards">        <div id="cards">        <div id="cards">
+            <!-- Cards will be generated here -->            <!-- Cards will be generated here -->            <!-- Cards will be generated here -->            <!-- Cards will be generated here -->
+        </div>        </div>        </div>        </div>
+        <button id="submit">제출</button>        <button id="submit">제출</button>        <button id="submit">제출</button>        <button id="submit">제출</button>
+        <p id="result"></p>        <p id="result"></p>        <p id="result"></p>        <p id="result"></p>
+    </div>    </div>    </div>    </div>
+
+    <script>    <script>    <script>    <script>
+        let cards = [        let cards = [        let cards = [        let cards = [
+            { number: 1, color: 'white' }, { number: 2, color: 'black' },            { number: 1, color: 'white' }, { number: 2, color: 'black' },            { number: 1, color: 'white' }, { number: 2, color: 'black' },            { number: 1, color: 'white' }, { number: 2, color: 'black' },
+            { number: 3, color: 'white' }, { number: 4, color: 'black' },            { number: 3, color: 'white' }, { number: 4, color: 'black' },            { number: 3, color: 'white' }, { number: 4, color: 'black' },            { number: 3, color: 'white' }, { number: 4, color: 'black' },
+            { number: 5, color: 'white' }, { number: 6, color: 'black' },            { number: 5, color: 'white' }, { number: 6, color: 'black' },            { number: 5, color: 'white' }, { number: 6, color: 'black' },            { number: 5, color: 'white' }, { number: 6, color: 'black' },
+            { number: 7, color: 'white' }, { number: 8, color: 'black' },            { number: 7, color: 'white' }, { number: 8, color: 'black' },            { number: 7, color: 'white' }, { number: 8, color: 'black' },            { number: 7, color: 'white' }, { number: 8, color: 'black' },
+            { number: 9, color: 'white' }            { number: 9, color: 'white' }            { number: 9, color: 'white' }            { number: 9, color: 'white' }
+        ];        ];        ];        ];        ];        ];        ];        ];
+        
+        let selectedCard = null;        let selectedCard = null;
+
+        function renderCards() {        function renderCards() {
+            const cardContainer = document.getElementById('cards');            const cardContainer = document.getElementById('cards');
+            cardContainer.innerHTML = '';            cardContainer.innerHTML = '';
+            cards.forEach(card => {            cards.forEach(card => {
+                const cardElement = document.createElement('div');                const cardElement = document.createElement('div');
+                cardElement.className = `card ${card.color}                cardElement.className = `card ${card.color}`;`;
+                cardElement.textContent = card.number;                cardElement.textContent = card.number;
+                cardElement.onclick = () => selectCard(card);                cardElement.onclick = () => selectCard(card);
+                cardContainer.appendChild(cardElement);                cardContainer.appendChild(cardElement);
+            });            });
+        }        }
+
+        function selectCard(card) {        function selectCard(card) {
+            selectedCard = card;            selectedCard = card;            selectedCard = card;            selectedCard = card;
+            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').textContent = `선택된 카드: ${card.number}`;textContent = 'Selected card: ${card.number}';textContent = `선택된 카드: ${card.number}`;textContent = 'Selected card: ${card.number}';
+        }        }        }        }
+
+        document.getElementById('submit').        document.getElementById('submit').        document.getElementById('submit').        document.getElementById('submit').onclick = () => {onclick = () => {onclick = () => {onclick = () => {
+            if (!selectedCard) {            if (!selectedCard) {            if (!selectedCard) {            if (!selectedCard) {            if (!selectedCard) {            if (!selectedCard) {            if (!selectedCard) {            if (!selectedCard) {
+                alert('카드를 선택하세요.');                alert('Select a card');                alert('Select a card'); alert('Select a card');                alert('카드를 선택하세요.');                alert('Select a card');                alert('Select a card'); alert('Select a card');
+                return;                return;                return;                return;                return;                return;                return;                return;
+            }            }            }            }            }            }            }            }
+            // 서버 통신 대신 간단한 승패 로직 추가            // Add simple win-loss logic instead of server communication            // Add simple win-loss logic instead of server communication // Add simple win-loss logical install of server communication            // 서버 통신 대신 간단한 승패 로직 추가            // Add simple win-loss logic instead of server communication            // Add simple win-loss logic instead of server communication // Add simple win-loss logical install of server communication
+            const opponentCard = Math.            const opponentCard = Math.            const opponentCard = Math.            const opponentCard = Math.            const opponentCard = Math.            const opponentCard = Math.            const opponentCard = Math.            const opponentCard = Math.floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;floor(Math.random() * 9) + 1;
+            let result = '';            let result = '';            let result = '';            let result = '';            let result = '';            let result = '';            let result = '';            let result = '';
+
+            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {            if (selectedCard.number > opponentCard) {
+                result = '승리';                result = 'win';                result = '승리';                result = 'win';                result = '승리';                result = 'win';                result = '승리';                result = 'win';
+            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {            } else if (selectedCard.number < opponentCard) {
+                result = '패배';                result = 'lose';                result = '패배';                result = 'lose';                result = '패배';                result = 'lose';                result = '패배';                result = 'lose';
+            } else {            } else {            } else {            } else {            } else {            } else {            } else {            } else {
+                result = '무승부';                result = 'Winning';                result = '무승부';                result = 'Winning';                result = '무승부';                result = 'Winning';                result = '무승부';                result = 'Winning';
+            }            }            }            }            }            }            }            }
+
+            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').            document.getElementById('result').textContent = `상대방 카드: ${opponentCard}, 결과: ${result}`;textContent = 'OpponentCard: ${opponentCard}, Result: ${result}';textContent = `상대방 카드: ${opponentCard}, 결과: ${result}`;textContent = 'OpponentCard: ${opponentCard}, Result: ${result}';textContent = `상대방 카드: ${opponentCard}, 결과: ${result}`;textContent = 'OpponentCard: ${opponentCard}, Result: ${result}';textContent = `상대방 카드: ${opponentCard}, 결과: ${result}`;textContent = 'OpponentCard: ${opponentCard}, Result: ${result}';
+            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);            cards = cards.filter(card => card.number !== selectedCard.number);
+            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card            renderCards(); // Re-render cards to reflect the used card
+            selectedCard = null;            selectedCard = null;            selectedCard = null;            selectedCard = null;            selectedCard = null;            selectedCard = null;            selectedCard = null;            selectedCard = null;
+        };        };        };        };        };        };        };        };
+
+        renderCards();        renderCards();        renderCards();        renderCards();        renderCards();        renderCards();        renderCards();        renderCards();
+    </script>    </script>    </script>    </script>    </script>    </script>    </script>    </script>
+</body></body></body></body></body></body></body></body>
+</html></html>
